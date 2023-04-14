@@ -27,6 +27,16 @@ res.status(201).json(newData);
 
 }
 
+
+export const login =  async(req,res) => {
+    const { email,pass } = req.body
+    const user = await User.findOne({email})
+if (user) {
+
+    res.json(user);
+    
+}
+}
 export const Ptuser = async(req,res) => {
     const { id } = req.params
     const user = await User.findByIdAndUpdate(id,req.body)
